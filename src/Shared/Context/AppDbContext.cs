@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Torneos.src.Modules.Personas.Domain.Entities;
 
 namespace Torneos.src.Shared.Context;
 
@@ -14,6 +15,8 @@ public class AppDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);
+        base.OnModelCreating(modelBuilder);
     }
+    public DbSet<Personas> personas { get; set; }
+    
 }
